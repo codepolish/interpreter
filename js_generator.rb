@@ -6,7 +6,7 @@ class JsGenerator
   
   def compile_all(nodes)
     nodes.each do |node|
-      node.compile(self)
+      node.compile(self) # one expression
       emit ";\n"
     end
   end
