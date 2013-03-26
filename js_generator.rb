@@ -20,9 +20,9 @@ class JsGenerator
   end
   
   def set_local(name, value)
-    @locals << name unless @locals.include?(name)
-    emit "#{name} = " # name = 1
-    value.compile(self)
+    @locals << name unless @locals.include?(name) # a = 1.... a = 2
+    emit "#{name} = "   # name =
+    value.compile(self) # 1 / "string"
   end
   
   def get_local(name)
@@ -30,7 +30,8 @@ class JsGenerator
   end
   
   def if(condition, body, else_body)
-    
+    # IGNORE else_body
+    condition.compile(self)
   end
 
   # Emit a chunk of Javascript code.
