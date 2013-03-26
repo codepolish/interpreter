@@ -31,7 +31,11 @@ class JsGenerator
   
   def if(condition, body, else_body)
     # IGNORE else_body
+    emit "if ("
     condition.compile(self)
+    emit ") {\n"
+    body.compile(self)
+    emit "}"
   end
 
   # Emit a chunk of Javascript code.
