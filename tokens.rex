@@ -21,6 +21,7 @@ rule
   class                   { [:CLASS, text] }
   if                      { [:IF, text] }
   else                    { [:ELSE, text] }
+  while                   { [:WHILE, text] }
   true                    { [:TRUE, text] }
   false                   { [:FALSE, text] }
   nil                     { [:NIL, text] }

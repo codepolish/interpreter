@@ -44,3 +44,11 @@ Constants["Number"].def :+ do |receiver, arguments|
   Constants["Number"].new_with_value(a + b)
 end
 
+# 1.<(2)
+Constants["Number"].def :< do |receiver, arguments|
+  a = receiver.ruby_value
+  b = arguments.first.ruby_value
+  
+  a < b ? Constants["true"] : Constants["false"]
+end
+
