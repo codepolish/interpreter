@@ -59,4 +59,15 @@ class BytecodeCompilerTest < Test::Unit::TestCase
       RETURN
     ], @compiler.compile("a=1; a")[:instructions]
   end
+
+  def test_if_with_else
+    assert_equal [
+      PUSH_BOOL,     1, # true   stack = [true]
+      JUMP_UNLESS,   4, # jump X more bytes unless what is on the stack is true
+      PUSH_STRING,   0, # "yeah!"
+      JUMP,          2,
+      PUSH_STRING,   1, # "no"
+      RETURN
+    ], @compiler.compile('if true; "yeah!"; else; "no" ;end')[:instructions]
+  end
 end
